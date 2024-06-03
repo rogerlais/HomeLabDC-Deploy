@@ -25,8 +25,8 @@ if %errorlevel% neq 0 (
 	)else (
 		del install-powershell.ps1
 		echo Powershell instalado com sucesso!
-		rem reload the environment variables
-		call powershell.exe -NoLogo -NoProfile -NonInteractive -Command "& { $env:Path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path', 'User'); [System.Environment]::SetEnvironmentVariable('Path', $env:Path, 'Process') }"
+		rem reload the environment variables, redirecting the output to PATH from process launched from shell execute
+		for /f "usebackq delims=" %i in (`powershell.exe -NoLogo -NoProfile -NonInteractive -Command "Write-Host $([System.Environment]::GetEnvironmentVariable('Path', 'Machine'))" `) do set path=%i
 	)
 ) else (
 	echo Sucesso!
