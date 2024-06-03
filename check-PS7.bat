@@ -13,7 +13,7 @@ if %errorlevel% neq 0 (
 	echo Fazendo instalação da versão mais recente do Powershell...
 
 	rem using pre installed version of powershell to download and install the latest version
-	call powershell.exe -NoLogo -NoProfile -NonInteractive -Command "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Quiet"
+	call powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -NonInteractive -Command "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Quiet"
 	if errorlevel 1 (
 		echo Falha ao instalar Powershell(latest^).
 		exit 1
