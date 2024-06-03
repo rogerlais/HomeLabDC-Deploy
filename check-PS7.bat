@@ -14,12 +14,19 @@ if %errorlevel% neq 0 (
 
 	rem using pre installed version of powershell to download and install the latest version
 	call powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -NonInteractive -Command "irm https://aka.ms/install-powershell.ps1 -Outfile install-powershell.ps1"
+	if errorlevel 1 (
+		echo Falha ao baixar o script de instalação do Powershell.
+		exit 1
+	)
 	call powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -NonInteractive -Command "& { ./install-powershell.ps1 -UseMSI -AddExplorerContextMenu -Verbose -Debug -Quiet }"
 	if errorlevel 1 (
 		echo Falha ao instalar Powershell(latest^).
 		exit 1
 	)else (
+		del install-powershell.ps1
 		echo Powershell instalado com sucesso!
+		rem reload the environment variables
+		call powershell.exe -NoLogo -NoProfile -NonInteractive -Command "& { $env:Path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path', 'User'); [System.Environment]::SetEnvironmentVariable('Path', $env:Path, 'Process') }"
 	)
 ) else (
 	echo Sucesso!
