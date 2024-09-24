@@ -7,5 +7,9 @@
 *.txt		text	working-tree-encoding=utf-8	encoding=utf-8	git-encoding=utf-8	eol=CRLF
 *.todo		text	working-tree-encoding=utf-8	encoding=utf-8	git-encoding=utf-8	eol=CRLF
 
+*.json				text	working-tree-encoding=utf-8	encoding=utf-8	git-encoding=utf-8	eol=LF
+*.gitattributes		text	working-tree-encoding=utf-8	encoding=utf-8	git-encoding=utf-8	eol=LF
+*.editorconfig		text	working-tree-encoding=utf-8	encoding=utf-8	git-encoding=utf-8	eol=LF
+
 *.bat		text	working-tree-encoding=iso-8859-1	encoding=iso-8859-1	git-encoding=iso-8859-1	eol=CRLF
 *.cmd		text	working-tree-encoding=iso-8859-1	encoding=iso-8859-1	git-encoding=iso-8859-1	eol=CRLF
