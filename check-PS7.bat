@@ -3,7 +3,7 @@
 rem encoding=iso 8859-1
 chcp 1252
 
-set REQ_VERSION=7.4.2
+set REQ_VERSION=7.4.6
 
 echo Testando a instalação do Powershell %REQ_VERSION% ou superior...
 
